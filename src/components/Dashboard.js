@@ -31,15 +31,10 @@ class Dashboard extends Component {
     focused: null,
   };
 
-  constructor(props) {
-    super(props);
+  selectPanel = function(id) {
 
-    this.selectPanel = this.selectPanel.bind(this);
-  }
-
-  selectPanel = (id) => {
     this.setState({
-      focused: id,
+     focused: this.state.focused ? null : id
     });
   };
 
@@ -62,7 +57,7 @@ class Dashboard extends Component {
         id={panel.id}
         label={panel.label}
         value={panel.value}
-        onSelect={this.selectPanel}
+        onSelect={event => this.selectPanel(panel.id)}
       />
     ));
 
